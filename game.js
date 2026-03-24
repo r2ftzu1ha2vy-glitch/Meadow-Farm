@@ -123,7 +123,7 @@ const player = { x:9*TILE+TILE/2, y:7*TILE+TILE/2, speed:2.6, facing:0, walkFram
 
 // ── Game State ─────────────────────────────────────
 const state = {
-  coins:30, cropsTotal:0, day:1, isNight:false, tool:'hoe',
+  coins:100, cropsTotal:0, day:1, isNight:false, tool:'hoe',
   bucket:0, BUCKET_MAX:5,
   // Quest tracking
   quests: [],          // active quest objects { ...def, progress:{}, claimed:false }
@@ -139,7 +139,7 @@ const state = {
 };
 
 // ── Day/Night Cycle ────────────────────────────────
-const CYCLE = { DAY_MS:60000, NIGHT_MS:45000, FADE_MS:4000, alpha:0, phase:'day', elapsed:0 };
+const CYCLE = { DAY_MS:45000, NIGHT_MS:30000, FADE_MS:4000, alpha:0, phase:'day', elapsed:0 };
 const STARS = Array.from({length:60},()=>({ x:Math.random()*COLS*TILE, y:Math.random()*ROWS*TILE*0.6, r:1+Math.random()*2, twinkle:Math.random()*Math.PI*2 }));
 const MOON  = { x:COLS*TILE*0.78, y:ROWS*TILE*0.12 };
 
