@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <title>🌸 Meadow Farm</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <div id="particles"></div>
+
+  <div id="game-wrapper">
+
+    <!-- HUD -->
+    <div id="top-bar">
+      <span class="title">🌸 Meadow Farm</span>
+      <div class="stat">🌾 <span id="stat-crops">0</span></div>
+      <div class="stat">💰 <span id="stat-coins">30</span></div>
+      <div class="stat">📅 Day <span id="stat-day">1</span></div>
+      <div class="stat" id="stat-time-wrap">☀️ <span id="stat-time">Day 1</span></div>
+      <div class="stat">🪣 <span id="stat-water">0</span>/5</div>
+      <button id="btn-music-toggle">🎵</button>
+    </div>
+
+    <!-- Game + sidebar -->
+    <div id="game-area">
+      <canvas id="game-canvas"></canvas>
+
+      <div id="sidebar">
+        <div class="sidebar-title">Tools</div>
+        <div class="tool-btn active" data-tool="hoe">
+          <span class="tool-icon">⛏️</span><span class="tool-label">Hoe</span><span class="tool-key">1</span>
+        </div>
+        <div class="tool-btn" data-tool="water">
+          <span class="tool-icon">💧</span><span class="tool-label">Water</span><span class="tool-key">2</span>
+        </div>
+        <div class="tool-btn" data-tool="harvest">
+          <span class="tool-icon">🧺</span><span class="tool-label">Harvest</span><span class="tool-key">3</span>
+        </div>
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-title">Seeds</div>
+        <div class="tool-btn" data-tool="seed-carrot">
+          <span class="tool-icon">🥕</span><span class="tool-label">Carrot</span>
+          <span class="tool-cost">5🪙</span><span class="tool-key">4</span>
+        </div>
+        <div class="tool-btn" data-tool="seed-strawberry">
+          <span class="tool-icon">🍓</span><span class="tool-label">Berry</span>
+          <span class="tool-cost">8🪙</span><span class="tool-key">5</span>
+        </div>
+        <div class="tool-btn" data-tool="seed-sunflower">
+          <span class="tool-icon">🌻</span><span class="tool-label">Sunflr</span>
+          <span class="tool-cost">6🪙</span><span class="tool-key">6</span>
+        </div>
+        <div class="tool-btn" data-tool="seed-pumpkin">
+          <span class="tool-icon">🎃</span><span class="tool-label">Pumpkn</span>
+          <span class="tool-cost">10🪙</span><span class="tool-key">7</span>
+        </div>
+        <div class="sidebar-divider"></div>
+        <div class="controls-hint">
+          Move<br><b>WASD/↑↓←→</b><br>
+          Use<br><b>Space / F</b><br>
+          Tools<br><b>1–7</b>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile controls: free-floating, shown only on touch devices via JS -->
+    <div id="joystick-zone" style="display:none">
+      <div id="joystick-base"><div id="joystick-knob"></div></div>
+    </div>
+    <div id="action-zone" style="display:none">
+      <div id="mobile-tools">
+        <button id="tool-prev">◀</button>
+        <div id="mobile-tool-display">
+          <span id="mobile-tool-icon">⛏️</span>
+          <span id="mobile-tool-name">Hoe</span>
+        </div>
+        <button id="tool-next">▶</button>
+      </div>
+      <button id="btn-action">✦ USE</button>
+    </div>
+    <button id="btn-reposition" style="display:none">✥ Move Controls</button>
+    <button id="btn-reposition-done" style="display:none">✓ Done</button>
+    <div id="reposition-hint" style="display:none">Drag the joystick or buttons anywhere — tap ✓ Done when finished</div>
+
+  </div>
+
+  <!-- Notifications -->
+  <div id="notif"></div>
+  <div id="tooltip"></div>
+
+  <!-- Quest panel (shown when near merchant) -->
+  <div id="quest-panel" class="hidden">
+    <div id="quest-header">
+      <span id="quest-merchant-name">🧙 Roaming Merchant</span>
+      <span id="quest-days-left"></span>
+      <button id="quest-close">✕</button>
+    </div>
+    <p id="quest-merchant-speech"></p>
+    <div id="quest-tabs">
+      <button class="quest-tab active" data-tier="sprout">🌱 Sprout</button>
+      <button class="quest-tab" data-tier="harvest">🌾 Harvest</button>
+      <button class="quest-tab" data-tier="bounty">🏆 Bounty</button>
+    </div>
+    <div id="quest-list"></div>
+  </div>
+
+  <audio id="bg-music" src="Music.mp3" loop></audio>
+  <script src="game.js"></script>
+</body>
+</html>
